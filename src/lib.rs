@@ -94,7 +94,7 @@ enum WebSocketMessage {
     Close(Option<CloseFrame>),
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 async fn connect<R: Runtime>(
     window: Window<R>,
     url: String,
@@ -160,7 +160,7 @@ async fn connect<R: Runtime>(
     Ok(id)
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 async fn send(
     manager: State<'_, ConnectionManager>,
     id: Id,
